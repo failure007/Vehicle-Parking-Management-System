@@ -6,18 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parking Lots</title>
 
-    <!-- Include Bootstrap CSS (adjust the path if needed) -->
+    <!-- Include Bootstrap CSS  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
 
-    <!-- Include your custom CSS styles -->
     <style>
-        /* Add your custom styles here */
+        /* Add  custom styles here */
     </style>
 
     <!-- Include jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-    <!-- Your JavaScript for real-time availability and reservation -->
+    <!--  JavaScript for real-time availability and reservation -->
     <script>
         // Function to fetch and update parking lots availability
         function updateParkingLotsAvailability() {
@@ -106,7 +105,7 @@
     <!-- Include Bootstrap JS (adjust the path if needed) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
 
-    <!-- Include your additional HTML content and scripts here -->
+    <!-- Include additional HTML content and scripts  -->
 
 </body>
 </html>
