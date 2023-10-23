@@ -1,14 +1,22 @@
 version: 2.1
 
 jobs:
-  hello-job:
-    machine:
-      image: ubuntu-2204:2022.07.1
+  build:
+    docker:
+      - image: circleci/php:7.4
+
     steps:
-      - checkout # check out the code in the project directory
-      - run: echo "hello world" # run the `echo` command
+      - checkout
+      - run:
+          name: Install PHP Dependencies
+          command: composer install
+
+      - run:
+          name: Run PHPUnit Tests
+          command: ./vendor/bin/phpunit
 
 workflows:
+  version: 2
   my-workflow:
     jobs:
-      - hello-job
+      - build
