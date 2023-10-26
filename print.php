@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
-if (strlen($_SESSION['vpmsuid']==0)) {
+if (strlen($_SESSION['vpmsaid']==0)) {
   header('location:logout.php');
   } else{
 
@@ -99,6 +99,5 @@ WinPrint.document.write(prtContent.innerHTML);
 WinPrint.document.close();
 WinPrint.focus();
 WinPrint.print();
-WinPrint.close();
 }
 </script> 
