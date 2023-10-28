@@ -1,30 +1,42 @@
 <?php
+// Start the user session and suppress error reporting
 session_start();
 error_reporting(0);
+// Include the database connection file
 include('includes/dbconnection.php');
+// Check if the admin is logged in; if not, redirect to the logout page
 if (strlen($_SESSION['vpmsaid']==0)) {
   header('location:logout.php');
   } else{
+    // If the admin is logged in, proceed with the following logic
+
+    // Check if the form is submitted
 
 if(isset($_POST['submit']))
   {
+    // Generate a random parking number
     $parkingnumber=mt_rand(100000000, 999999999);
+    // Get data from the form
     $catename=$_POST['catename'];
-     $vehcomp=$_POST['vehcomp'];
+    $vehcomp=$_POST['vehcomp'];
     $vehreno=$_POST['vehreno'];
     $ownername=$_POST['ownername'];
     $ownercontno=$_POST['ownercontno'];
     $enteringtime=$_POST['enteringtime'];
     
-     
+    // Insert the vehicle details into the database
     $query=mysqli_query($con, "insert into  tblvehicle(ParkingNumber,VehicleCategory,VehicleCompanyname,RegistrationNumber,OwnerName,OwnerContactNumber) value('$parkingnumber','$catename','$vehcomp','$vehreno','$ownername','$ownercontno')");
+    // Check if the query was successful
     if ($query) {
+        // Display a success message and redirect to the vehicle management page
 echo "<script>alert('Vehicle Entry Detail has been added');</script>";
 echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
   }
   else
     {
-     echo "<script>alert('Something Went Wrong. Please try again.');</script>";       
+    // Display an error message if something goes wrong with the query
+            
+    echo "<script>alert('Something Went Wrong. Please try again.');</script>";       
     }
 
   

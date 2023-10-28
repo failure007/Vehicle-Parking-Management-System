@@ -1,27 +1,34 @@
 <?php
+// Start the user session and suppress error reporting
 session_start();
 error_reporting(0);
+// Include the database connection file
 include('includes/dbconnection.php');
+// Check if the admin is logged in; if not, redirect to the logout page
 if (strlen($_SESSION['vpmsaid']==0)) {
   header('location:logout.php');
   } else{
+// If the admin is logged in, proceed with the following logic
 
+// Check if the form is submitted
 if(isset($_POST['submit']))
   {
+    // Get session and form data
     $aid=$_SESSION['vpmsaid'];
-     $catname=$_POST['catename'];
-     $vehicle_cost=$_POST['vehicle_cost'];
-  $eid=$_GET['editid'];
-   
+    $catname=$_POST['catename'];
+    $vehicle_cost=$_POST['vehicle_cost'];
+    $eid=$_GET['editid'];
+   // Update category details in the database
     $query=mysqli_query($con, "update tblcategory set VehicleCat='$catname', VehicleCost='$vehicle_cost' where ID='$eid'");
+    // Check if the update was successful
     if ($query) {
-    
+    // Redirect to the manage-category.php page
     // echo "<script>alert('Category Details updated');</script>";
     header('location:manage-category.php');
   }
   else
     {
-    
+     // Display an error message if the update fails
       echo "<script>alert('Something Went Wrong. Please try again');</script>";
     }
 

@@ -1,24 +1,32 @@
 <?php
+//start the user session and supress error reporting 
 session_start();
 error_reporting(0);
+//include the database connection file
 include('includes/dbconnection.php');
+//check if the admin is logged in if not redirect to logout page
 if (strlen($_SESSION['vpmsaid']==0)) {
   header('location:logout.php');
   } else{
+    // If the admin is logged in, proceed with the following logic
 
+    // Check if the form is submitted
 if(isset($_POST['submit']))
   {
+    // Get category name and vehicle cost from the form
     $catname=$_POST['catename'];
     $vehicle_cost=$_POST['vehicle_cost'];
-     
+    // Insert the category details into the database
     $query=mysqli_query($con, "insert into  tblcategory(VehicleCat, VehicleCost) value('$catname','$vehicle_cost')");
+    // Check if the query was successful
     if ($query) {
+    // Display a success message and redirect to the category management page
     echo "<script>alert('Category added successfully');</script>";
 echo "<script>window.location.href='manage-category.php'</script>";
   }
   else
     {
-     
+     // Display an error message if something goes wrong with the query
        echo "<script>alert('Something Went Wrong. Please try again');</script>";
     }
 

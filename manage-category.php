@@ -1,15 +1,22 @@
 <?php
+// Start the user session and suppress error reporting
 session_start();
 error_reporting(0);
+// Include the database connection file
 include('includes/dbconnection.php');
+// Check if the admin is logged in; if not, redirect to the logout page
+
 if (strlen($_SESSION['vpmsaid']==0)) {
   header('location:logout.php');
   } else{
 
-// For deleting    
+// Check if 'del' parameter is set in the URL for deletion
+       
 if($_GET['del']){
 $catid=$_GET['del'];
+// Delete category based on the ID
 mysqli_query($con,"delete from tblcategory where ID ='$catid'");
+// Display alert and redirect to the manage-category page
 echo "<script>alert('Data Deleted');</script>";
 echo "<script>window.location.href='manage-category.php'</script>";
           }

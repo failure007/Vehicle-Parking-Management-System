@@ -1,7 +1,10 @@
   <?php
+  // Start the user session and suppress error reporting
 session_start();
 error_reporting(0);
+// Include the database connection file
 include('includes/dbconnection.php');
+// Check if the admin is logged in; if not, redirect to the logout page
 if (strlen($_SESSION['vpmsaid']==0)) {
   header('location:logout.php');
   } else{
@@ -17,9 +20,13 @@ if (strlen($_SESSION['vpmsaid']==0)) {
     <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="assets/css/style.css">           
 <?php
+ // Get vehicle ID from the URL
+ 
  $cid=$_GET['vid'];
-$ret=mysqli_query($con,"select * from tblvehicle where ID='$cid'");
+// Fetch vehicle details based on the ID
+ $ret=mysqli_query($con,"select * from tblvehicle where ID='$cid'");
 $cnt=1;
+// Iterate through the fetched data
 while ($row=mysqli_fetch_array($ret)) {
   ?>
 
