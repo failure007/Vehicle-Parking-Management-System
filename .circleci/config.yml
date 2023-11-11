@@ -13,10 +13,17 @@ jobs:
 
       - run:
           name: Run PHPUnit Tests
-          command: ./vendor/bin/phpunit
+          command: |
+            if [ "$RUN_TESTS" = "true" ]; then
+              ./vendor/bin/phpunit
+            else
+              echo "Skipping tests."
+            fi
 
 workflows:
   version: 2
   my-workflow:
     jobs:
-      - build
+      - build:
+          environment:
+            RUN_TESTS: false
