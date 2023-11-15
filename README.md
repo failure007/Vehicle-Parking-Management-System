@@ -11,6 +11,7 @@ It enables users to:
 - Search for available parking spaces by location, date, and time.
 - View real-time parking availability.
 - Select and reserve parking spaces for specific dates and times.
+- Allows users to book multiple slots for a group
 
 
 ## Features
@@ -20,6 +21,7 @@ It enables users to:
 - Search for parking spaces based on location, date, and time.
 - Reservation of parking spaces.
 - Group booking for events and meetings.
+
 
 ## Technologies Used
 
