@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            docker build -t $DOCKERHUB_USERNAME/myapp:${CIRCLE_SHA1} .
+            docker build -t $DOCKERHUB_USERNAME/vps:${CIRCLE_SHA1} .
       - run:
           name: Authenticate with Docker Hub
           command: |
@@ -40,7 +40,7 @@ jobs:
       - run:
           name: Push Docker Image to Docker Hub
           command: |
-            docker push $DOCKERHUB_USERNAME/myapp:${CIRCLE_SHA1}
+            docker push $DOCKERHUB_USERNAME/vps:${CIRCLE_SHA1}
 
 workflows:
   version: 2
