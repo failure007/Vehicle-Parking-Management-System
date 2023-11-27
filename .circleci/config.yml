@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build:
+  build_and_test:
     docker:
       - image: circleci/php:8.2.4
 
@@ -12,18 +12,17 @@ jobs:
           command: composer install
 
       - run:
-          name: Run PHPUnit Tests
+          name: Run Admin PHPUnit Tests
           command: |
-            if [ "$RUN_TESTS" = "true" ]; then
-              ./vendor/bin/phpunit
-            else
-              echo "Skipping tests."
-            fi
+            ./vendor/bin/phpunit tests/admin
+
+      - run:
+          name: Run Users PHPUnit Tests
+          command: |
+            ./vendor/bin/phpunit tests/users
 
 workflows:
   version: 2
   my-workflow:
     jobs:
-      - build:
-          environment:
-            RUN_TESTS: false
+      - build_and_test
