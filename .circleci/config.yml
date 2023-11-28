@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   run_phpunit_tests:
     docker:
-      - image: php:8.2.4
+      - image: php:7.3
 
     steps:
       - checkout
