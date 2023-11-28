@@ -43,7 +43,7 @@ jobs:
 
   build_and_push_docker_image:
     docker:
-      - image: php:7.3
+      - image: circleci/php:7.3-node
       - image: cimg/python:3.8
 
     steps:
