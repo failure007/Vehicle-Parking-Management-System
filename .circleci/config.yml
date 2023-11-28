@@ -6,6 +6,10 @@ jobs:
       - image: circleci/php:8.2.4
 
     steps:
+     - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "composer.lock" }}
+            - v1-dependencies-
       - checkout
       - run:
           name: Install PHP Dependencies
@@ -20,6 +24,10 @@ jobs:
           name: Run Users PHPUnit Tests
           command: |
             ./vendor/bin/phpunit tests/users
+      - save_cache:
+          paths:
+            - vendor
+          key: v1-dependencies-{{ checksum "composer.lock" }}
 
   build_and_push_docker_image:
     docker:
