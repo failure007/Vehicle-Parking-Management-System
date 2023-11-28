@@ -6,10 +6,10 @@ use PHPUnit\Framework\TestCase;
 class SignupTest extends TestCase {
     public function test_successful_registration() {
         // Simulate submitting the form with valid credentials
-        $_POST['firstname'] = 'John';
-        $_POST['lastname'] = 'Doe';
+        $_POST['firstname'] = 'sasi';
+        $_POST['lastname'] = 'kiran';
         $_POST['mobilenumber'] = '1234567890';
-        $_POST['email'] = 'johndoe@example.com';
+        $_POST['email'] = 'sasi@example.com';
         $_POST['password'] = 'password';
         $_POST['repeatpassword'] = 'password';
 
@@ -25,10 +25,10 @@ class SignupTest extends TestCase {
 
     public function test_duplicate_email_registration_failure() {
         // Simulate submitting the form with an existing email address
-        $_POST['firstname'] = 'Jane';
-        $_POST['lastname'] = 'Doe';
+        $_POST['firstname'] = 'sasi';
+        $_POST['lastname'] = 'kiran';
         $_POST['mobilenumber'] = '9876543210';
-        $_POST['email'] = 'johndoe@example.com'; // Existing email address
+        $_POST['email'] = 'sasi@example.com'; // Existing email address
         $_POST['password'] = 'password';
         $_POST['repeatpassword'] = 'password';
 
@@ -44,10 +44,10 @@ class SignupTest extends TestCase {
 
     public function test_invalid_password_registration_failure() {
         // Simulate submitting the form with mismatched passwords
-        $_POST['firstname'] = 'Jane';
-        $_POST['lastname'] = 'Doe';
+        $_POST['firstname'] = 'dheeraj';
+        $_POST['lastname'] = 'kumar';
         $_POST['mobilenumber'] = '9876543210';
-        $_POST['email'] = 'janedoe@example.com';
+        $_POST['email'] = 'dkumar@example.com';
         $_POST['password'] = 'password1';
         $_POST['repeatpassword'] = 'password2';
 
