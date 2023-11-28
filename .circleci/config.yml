@@ -28,10 +28,10 @@ jobs:
       - run:
           name: Install PHP Dependencies
           command: composer install
-          
+
       - run:
-        name: Set execute permissions for PHPUnit
-        command: chmod +x ./vendor/bin/phpunit
+          name: Set execute permissions for PHPUnit
+          command: chmod +x ./vendor/bin/phpunit
 
       - run:
           name: Run Admin PHPUnit Tests
@@ -83,7 +83,6 @@ jobs:
       - run:
           name: List /usr/local/bin
           command: ls -l /usr/local/bin
-
 
 workflows:
   version: 2
