@@ -10,7 +10,9 @@ COPY . /app
 # Install mysqli extension 
 RUN docker-php-ext-install mysqli && \
     apt-get update && apt-get install -y \
-
+    # Additional packages if needed
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Run all PHPUnit tests
- CMD ["php", "./vendor/bin/phpunit", "--configuration", "phpunit.xml"]
+CMD ["php", "./vendor/bin/phpunit", "--configuration", "phpunit.xml"]
