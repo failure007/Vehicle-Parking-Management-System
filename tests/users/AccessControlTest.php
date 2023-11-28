@@ -9,7 +9,7 @@ class AccessControlTest extends PHPUnit\Framework\TestCase
 
     // Act
     ob_start();
-    include('add-vehicle.php');
+    include(__DIR__ . '/../../users/add-vehicle.php');
     $output = ob_get_clean();
 
     // Assert
