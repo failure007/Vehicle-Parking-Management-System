@@ -3,7 +3,7 @@ require 'vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
 
-class LogoutTest extends TestCase
+class logoutTest extends TestCase
 {
     public function test_session_destroyed_and_redirected_to_login_page()
     {
