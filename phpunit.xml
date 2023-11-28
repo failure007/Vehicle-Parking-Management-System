@@ -4,11 +4,8 @@
             <directory>tests/Admin</directory>
             <directory>tests/Users</directory>
         </testsuite>
+        <testsuite name="Test suite">
+            <directory>tests</directory>
+        </testsuite>
     </testsuites>
-<phpunit>
-  <testsuites>
-    <testsuite name="Test suite">
-      <directory>tests</directory>
-    </testsuite>
-  </testsuites>
 </phpunit>
