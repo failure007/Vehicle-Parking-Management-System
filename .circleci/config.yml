@@ -10,7 +10,6 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "composer.lock" }}
             - v1-dependencies-
-          working_directory: Vehicle-Parking-Management-System
       - checkout
       - run:
           name: Install PHP Dependencies
