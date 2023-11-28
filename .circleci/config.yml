@@ -6,10 +6,6 @@ jobs:
       - image: php:8.2.4
 
     steps:
-      #- restore_cache:
-       #   keys:
-        #    - v1-dependencies-{{ checksum "composer.lock" }}
-         #   - v1-dependencies-
       - checkout
       - run:
           name: Check Composer Version
@@ -28,10 +24,6 @@ jobs:
           name: Run Users PHPUnit Tests
           command: |
             ./vendor/bin/phpunit tests/users
-      #- save_cache:
-       #   paths:
-        #    - vendor
-         # key: v1-dependencies-{{ checksum "composer.lock" }}
 
   build_and_push_docker_image:
     docker:
@@ -45,14 +37,32 @@ jobs:
           name: Build Docker Image
           command: |
             docker build -t $DOCKERHUB_USERNAME/vps:${CIRCLE_SHA1} .
+
       - run:
           name: Authenticate with Docker Hub
           command: |
             echo "$DOCKERHUB_PASS" | docker login --username $DOCKERHUB_USERNAME --password-stdin
+
       - run:
           name: Push Docker Image to Docker Hub
           command: |
             docker push $DOCKERHUB_USERNAME/vps:${CIRCLE_SHA1}
+
+      - run:
+          name: Check PATH
+          command: echo $PATH
+
+      - run:
+          name: Set PATH
+          command: export PATH=$PATH:/usr/local/bin
+
+      - run:
+          name: Check PHP Version
+          command: php --version
+
+      - run:
+          name: Check Composer Version
+          command: composer --version
 
 workflows:
   version: 2
@@ -62,6 +72,7 @@ workflows:
           filters:
             branches:
               only: master
+
       - build_and_push_docker_image:
           requires:
             - run_phpunit_tests
