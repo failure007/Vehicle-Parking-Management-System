@@ -5,8 +5,8 @@ class AddVehicleTest extends PHPUnit\Framework\TestCase
         // Arrange
         $vehicleCategory = 'Car';
         $vehicleCompany = 'Toyota';
-        $registrationNumber = 'TN 01 AB 1234';
-        $ownerName = 'John Doe';
+        $registrationNumber = 'Ts 01 AB 1234';
+        $ownerName = 'sasi kiran';
         $ownerContactNumber = '9876543210';
         $parkingNumber = mt_rand(100000000, 999999999);
 
