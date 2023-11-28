@@ -22,10 +22,6 @@ jobs:
           command: /usr/local/bin/composer --version
 
       - run:
-          name: Debug Shell
-          command: /bin/bash
-
-      - run:
           name: Check PHP Version
           command: php --version
 
@@ -84,9 +80,6 @@ jobs:
           name: List /usr/local/bin
           command: ls -l /usr/local/bin
 
-      - run:
-          name: Debug Shell
-          command: /bin/bash
 
 workflows:
   version: 2
