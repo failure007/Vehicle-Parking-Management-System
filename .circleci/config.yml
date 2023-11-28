@@ -7,9 +7,18 @@ jobs:
 
     steps:
       - checkout
+
+      - run:
+          name: Install Composer
+          command: |
+            php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+            php -r "if (hash_file('sha384', 'composer-setup.php') === '795f976fe0ebd8b75f26a6dd68f78fd3453ce79f32ecb33e7fd087d39bfeb978342fb73a72f50b7c48e02867fd9363e') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+            php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+            php -r "unlink('composer-setup.php');"
+
       - run:
           name: Check Composer Version
-          command: composer --version
+          command: /usr/local/bin/composer --version
 
       - run:
           name: Install PHP Dependencies
@@ -62,7 +71,7 @@ jobs:
 
       - run:
           name: Check Composer Version
-          command: composer --version
+          command: /usr/local/bin/composer --version
 
       - run:
           name: List /usr/local/bin
@@ -79,4 +88,11 @@ workflows:
       - run_phpunit_tests:
           filters:
             branches:
-              only:
+              only: master
+
+      - build_and_push_docker_image:
+          requires:
+            - run_phpunit_tests
+          filters:
+            branches:
+              only: master
