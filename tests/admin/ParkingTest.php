@@ -12,7 +12,6 @@ class ParkingTest extends TestCase
 
         $result = $parkingManager->addParkingLevel(5);
 
-        // Perform assertions based on your test case
         $this->assertTrue($result);
     }
 }
