@@ -2,31 +2,35 @@
 session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
-if (strlen($_SESSION['vpmsaid']==0)) {
-  header('location:logout.php');
-  } else{
+
+if (strlen($_SESSION['vpmsaid'] == 0)) {
+    header('location:logout.php');
+} else {
     $getFloorLevelQuery = mysqli_query($con, "SELECT floor_level FROM tbparkingslots ORDER BY id DESC LIMIT 1");
     $floorLevel = mysqli_fetch_assoc($getFloorLevelQuery);
     $getLevel = $floorLevel['floor_level'];
-    $getLevel = $getLevel+1;
+    $getLevel = $getLevel + 1;
 
-    if(isset($_POST['submit'])) {
-        $no_of_blocks=$_POST['no_of_blocks'];
-        
-        $query=mysqli_query($con, "insert into  tbparkingslots(floor_level, no_of_blocks) value('$getLevel','$no_of_blocks')");
+    if (isset($_POST['submit'])) {
+        $no_of_blocks = $_POST['no_of_blocks'];
+
+        $query = mysqli_query($con, "INSERT INTO tbparkingslots(floor_level, no_of_blocks) VALUES ('$getLevel','$no_of_blocks')");
         if ($query) {
-            echo "<script>alert('Parking Level added successfully');</script>";
-            header('location:slots-available.php');
+            // Display a success message using JavaScript
+            echo "<script>
+                    alert('Parking Level added successfully');
+                    window.location.href='slots-available.php';
+                  </script>";
+            exit;  // Important: stop execution after redirection
         }
     }
-
-  ?>
+}
+?>
 <!doctype html>
 <html class="no-js" lang="">
 <head>
     
     <title>VPMS - Add Vehicle</title>
-   
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
     <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
@@ -43,6 +47,8 @@ if (strlen($_SESSION['vpmsaid']==0)) {
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+
+    <!-- Your additional head content goes here -->
 
 </head>
 <body>
@@ -79,17 +85,12 @@ if (strlen($_SESSION['vpmsaid']==0)) {
         <div class="content">
             <div class="animated fadeIn">
 
-
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="card">
-                            
-                           
+                            <!-- Your card content goes here -->
                         </div> <!-- .card -->
-
                     </div><!--/.col-->
-
-              
 
                     <div class="col-lg-12">
                         <div class="card">
@@ -97,8 +98,7 @@ if (strlen($_SESSION['vpmsaid']==0)) {
                                 <strong>Add Parking Level</strong>
                             </div>
                             <div class="card-body card-block">
-                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                    
+                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Parking Level</label></div>
                                         <div class="col-12 col-md-9"><input type="text" id="floor_level" name="floor_level" class="form-control" disabled="true" required="true" value="<?php  echo 'B'.$getLevel;?>"></div>
@@ -106,25 +106,20 @@ if (strlen($_SESSION['vpmsaid']==0)) {
                                         <div class="col col-md-3 mt-4"><label for="text-input" class=" form-control-label">No of Slots</label></div>
                                         <div class="col-12 col-md-9 mt-4"><input type="number" id="no_of_blocks" name="no_of_blocks" class="form-control" required="true"></div>
                                     </div>
-                                    
-                                   <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" >Add</button></p>
+                                    <p style="text-align: center;"><button type="submit" class="btn btn-primary btn-sm" name="submit">Add</button></p>
                                 </form>
                             </div>
-                            
                         </div>
-                        
                     </div>
 
                     <div class="col-lg-6">
-                        
-                  
+                        <!-- Your content goes here -->
+                    </div>
                 </div>
 
-           
+                <!-- Your additional content goes here -->
 
             </div>
-
-
         </div><!-- .animated -->
     </div><!-- .content -->
 
@@ -143,8 +138,8 @@ if (strlen($_SESSION['vpmsaid']==0)) {
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 <script src="assets/js/main.js"></script>
 
+<!-- Your additional scripts go here -->
 
-  
 </body>
 </html>
 <?php }  ?>
