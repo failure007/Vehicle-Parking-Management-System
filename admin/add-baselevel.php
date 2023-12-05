@@ -1,4 +1,6 @@
 <?php
+namespace Admin;
+
 session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
@@ -6,22 +8,19 @@ include('includes/dbconnection.php');
 if (strlen($_SESSION['vpmsaid'] == 0)) {
     header('location:logout.php');
 } else {
-    $getFloorLevelQuery = mysqli_query($con, "SELECT floor_level FROM tbparkingslots ORDER BY id DESC LIMIT 1");
-    $floorLevel = mysqli_fetch_assoc($getFloorLevelQuery);
-    $getLevel = $floorLevel['floor_level'];
-    $getLevel = $getLevel + 1;
+    $parkingManager = new ParkingManager($con);
 
     if (isset($_POST['submit'])) {
         $no_of_blocks = $_POST['no_of_blocks'];
 
-        $query = mysqli_query($con, "INSERT INTO tbparkingslots(floor_level, no_of_blocks) VALUES ('$getLevel','$no_of_blocks')");
+        $query = $parkingManager->addParkingLevel($no_of_blocks);
+
         if ($query) {
-            // Display a success message using JavaScript
             echo "<script>
                     alert('Parking Level added successfully');
                     window.location.href='slots-available.php';
                   </script>";
-            exit;  // Important: stop execution after redirection
+            exit;
         }
     }
 }
@@ -47,8 +46,6 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-
-    
 
 </head>
 <body>
@@ -88,7 +85,7 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="card">
-                           
+                            
                         </div> <!-- .card -->
                     </div><!--/.col-->
 
@@ -113,11 +110,9 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
                     </div>
 
                     <div class="col-lg-6">
-                       
+                        
                     </div>
                 </div>
-
-               
 
             </div>
         </div><!-- .animated -->
@@ -138,8 +133,6 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 <script src="assets/js/main.js"></script>
 
-
-
 </body>
 </html>
-<?php }  ?>
+<?php } ?>
