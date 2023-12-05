@@ -12,7 +12,7 @@ class PaymentDetailsTest extends TestCase
         $_GET['veh_id'] = 456;
 
         // Execute the code
-        include('payment-detail.php');
+        include(__DIR__ . '/../../users/payment-detail.php');
 
         // Check if the booking and vehicle IDs are displayed
         $this->expectOutputString('<td align="center">' . $_GET['booking_id'] . '</td>');
@@ -25,7 +25,7 @@ class PaymentDetailsTest extends TestCase
         $_GET['veh_id'] = 456;
 
         // Execute the code
-        include('payment-detail.php');
+        include(__DIR__ . '/../../users/payment-detail.php');
 
         // Check if the user is redirected to the my-bookings page
         $this->expectOutputString('<script>window.location.href=\'my-bookings.php\'</script>');
@@ -37,7 +37,7 @@ class PaymentDetailsTest extends TestCase
         $_GET['veh_id'] = 'invalid_vehicle_id';
 
         // Execute the code
-        include('payment-detail.php');
+        include(__DIR__ . '/../../users/payment-detail.php');
 
         // Check if the user is redirected to the view-vehicle-details page for the specified booking ID
         $this->expectOutputString('<script>window.location.href=\'view-vehicle-details.php?booking_id=123\'</script>');
