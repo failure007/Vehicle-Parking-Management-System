@@ -11,7 +11,7 @@ class PrintDetailsTest extends TestCase
         $_GET['vid'] = 123;
 
         // Execute the code
-        include('print.php');
+        include(__DIR__ . '/../../users/print.php');
 
         // Check if the vehicle details are displayed
         $this->expectOutputString('<td align="center">' . $_GET['vid'] . '</td>');
@@ -23,7 +23,7 @@ class PrintDetailsTest extends TestCase
         $_GET['vid'] = 123;
 
         // Execute the code
-        include('print.php');
+        include(__DIR__ . '/../../users/print.php');
 
         // Check if the vehicle status is displayed as "Incoming Vehicle"
         $this->expectOutputString('<td align="center">Incoming Vehicle</td>');
@@ -36,7 +36,7 @@ class PrintDetailsTest extends TestCase
         $_POST['outTime'] = date('Y-m-d H:i:s');
 
         // Execute the code
-        include('print.php');
+        include(__DIR__ . '/../../users/print.php');
 
         // Check if the vehicle status is displayed as "Outgoing Vehicle"
         $this->expectOutputString('<td align="center">Outgoing Vehicle</td>');
