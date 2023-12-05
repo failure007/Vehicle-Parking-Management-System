@@ -31,7 +31,7 @@ class LoginTest extends TestCase
         $_POST['password'] = 'validpassword';
 
         // Execute the code
-        include('login.php');
+        include(__DIR__ . '/../../users/login.php');
 
         // Capture output for assertion
         ob_start();
