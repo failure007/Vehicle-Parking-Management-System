@@ -48,7 +48,7 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
-    <!-- Your additional head content goes here -->
+    
 
 </head>
 <body>
@@ -88,7 +88,7 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="card">
-                            <!-- Your card content goes here -->
+                           
                         </div> <!-- .card -->
                     </div><!--/.col-->
 
@@ -113,11 +113,11 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
                     </div>
 
                     <div class="col-lg-6">
-                        <!-- Your content goes here -->
+                       
                     </div>
                 </div>
 
-                <!-- Your additional content goes here -->
+               
 
             </div>
         </div><!-- .animated -->
@@ -138,7 +138,7 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 <script src="assets/js/main.js"></script>
 
-<!-- Your additional scripts go here -->
+
 
 </body>
 </html>
