@@ -50,7 +50,7 @@ class LoginTest extends TestCase
         $_POST['password'] = 'validpassword';
 
         // Execute the code
-        include('login.php');
+        include(__DIR__ . '/../../users/login.php');
 
         // Check for redirection to dashboard.php
         $this->expectOutputString('Location: dashboard.php');
