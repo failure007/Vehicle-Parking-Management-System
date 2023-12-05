@@ -12,7 +12,7 @@ class ResetPasswordTest extends TestCase
         $_POST['confirmpassword'] = 'newPassword';
 
         // Execute the code
-        include('reset-password.php');
+        include(__DIR__ . '/../../users/reset-password.php');
 
         // Check if the password reset success message is displayed
         $this->expectOutputString('<script>alert(\'Password successfully changed\');</script>');
@@ -25,7 +25,7 @@ class ResetPasswordTest extends TestCase
         $_POST['confirmpassword'] = 'newPassword2';
 
         // Execute the code
-        include('reset-password.php');
+        include(__DIR__ . '/../../users/reset-password.php');
 
         // Check if the password reset failure message is displayed
         $this->expectOutputString('<script>alert(\'New Password and Confirm Password field does not match\');</script>');
@@ -38,7 +38,7 @@ class ResetPasswordTest extends TestCase
         $_POST['confirmpassword'] = '';
 
         // Execute the code
-        include('reset-password.php');
+        include(__DIR__ . '/../../users/reset-password.php');
 
         // Check if the password reset invalid credentials message is displayed
         $this->expectOutputString('<script>alert(\'New Password and Confirm Password field does not match\');</script>');
