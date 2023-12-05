@@ -14,7 +14,7 @@ class SignupTest extends TestCase {
         $_POST['repeatpassword'] = 'password';
 
         // Execute the code
-        include('signup.php');
+        include(__DIR__ . '/../../users/signup.php');
 
         // Check if the registration success message is displayed
         $this->expectOutputString('<script>alert("You have successfully registered")</script>');
@@ -33,7 +33,7 @@ class SignupTest extends TestCase {
         $_POST['repeatpassword'] = 'password';
 
         // Execute the code
-        include('signup.php');
+        include(__DIR__ . '/../../users/signup.php');
 
         // Check if the duplicate email registration failure message is displayed
         $this->expectOutputString('<script>alert("This email or Contact Number already associated with another account")</script>');
@@ -52,7 +52,7 @@ class SignupTest extends TestCase {
         $_POST['repeatpassword'] = 'password2';
 
         // Execute the code
-        include('signup.php');
+        include(__DIR__ . '/../../users/signup.php');
 
         // Check if the invalid password registration failure message is displayed
         $this->expectOutputString('<script>alert("Password and Repeat Password field does not match")</script>');
@@ -71,7 +71,7 @@ class SignupTest extends TestCase {
         $_POST['repeatpassword'] = '';
 
         // Execute the code
-        include('signup.php');
+        include(__DIR__ . '/../../users/signup.php');
 
         // Check if the empty fields registration failure message is displayed
         $this->expectOutputString('<script>alert("Please fill in all the required fields")</script>');
