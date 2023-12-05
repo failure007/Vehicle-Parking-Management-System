@@ -12,7 +12,7 @@ class ForgotPasswordTest extends TestCase
         $_POST['contactno'] = '';
 
         // Execute the code
-        include('forgot-password.php');
+        include(__DIR__ . '/../../users/forgot-password.php');
 
         // Capture output for assertion
         ob_start();
