@@ -1,6 +1,6 @@
 <?php
 
-// Your test class
+
 class ChangePasswordTest extends PHPUnit\Framework\TestCase {
 
     // Test method to check the change password logic
