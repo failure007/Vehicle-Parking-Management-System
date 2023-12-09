@@ -1,6 +1,6 @@
 <?php
 
-// Your test class
+
 class CategoryFormTest extends PHPUnit\Framework\TestCase {
 
     // Test method to check form submission logic
