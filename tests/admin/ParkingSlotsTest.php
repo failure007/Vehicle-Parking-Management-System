@@ -1,6 +1,6 @@
 <?php
 
-// Your test class
+
 class ParkingSlotsTest extends PHPUnit\Framework\TestCase {
 
     // Test method to check logic for available parking slots
