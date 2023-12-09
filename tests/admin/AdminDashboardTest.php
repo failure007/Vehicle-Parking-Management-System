@@ -1,6 +1,6 @@
 <?php
 
-// Your test class
+
 class AdminDashboardTest extends PHPUnit\Framework\TestCase {
 
     // Test method to check the admin dashboard logic
