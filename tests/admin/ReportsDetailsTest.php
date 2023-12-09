@@ -1,6 +1,6 @@
 <?php
 
-// Your test class
+
 class ReportsDetailsTest extends PHPUnit\Framework\TestCase {
 
     // Test method to check the report generation logic
