@@ -1,48 +1,32 @@
 <?php
+use PHPUnit\Framework\TestCase;
 
+class DashboardTest extends TestCase {
 
-class ChangePasswordTest extends PHPUnit\Framework\TestCase {
+    public function testCategoryAddition() {
+        // Assuming the form data to add a category
+        $formData = array(
+            'catename' => 'Test Category',
+            'vehicle_cost' => 10, // Example value for vehicle cost.
+            
+        );
 
-    // Test method to check the change password logic
-    public function testChangePassword() {
-        // Simulate the $_SESSION data
-        $_SESSION['vpmsaid'] = 'some_value'; // Simulating a non-empty session value
+        // Simulate a POST request to add-category.php
+        $_SERVER['REQUEST_METHOD'] = 'POST';
+        $_POST = $formData;
 
-        // Simulate the $_POST data for changing password
-        $_POST['submit'] = true;
-        $_POST['currentpassword'] = 'current_pass';
-        $_POST['newpassword'] = 'new_pass';
-        $_POST['confirmpassword'] = 'new_pass';
+        // Include the file for testing
+        include 'add-category.php';
 
-        // Simulate the logic without database connection
-        // Replicating the logic used for changing the password
-        if (isset($_SESSION['vpmsaid']) && strlen($_SESSION['vpmsaid']) > 0) {
-            // Check if the required session variable is set
-            // Then proceed with the password change logic
-            $adminid = $_SESSION['vpmsaid'];
-            $cpassword = md5($_POST['currentpassword']);
-            $newpassword = md5($_POST['newpassword']);
+        // Performing assertions to verify the expected behavior
+        
+        $this->expectOutputRegex('/Category added successfully/'); 
 
-            // Simulate a database query to check the current password
-            // Here, assuming a successful query with correct password
-            $queryResult = true;
+        //performing database assertions here to confirm data insertion
+        
 
-            // Simulating the actions based on the query result
-            if ($queryResult) {
-                // Simulate the successful password update message
-                $outputMessage = "<script>alert('Your password successully changed.');</script>";
-            } else {
-                // Simulate the error message for incorrect current password
-                $outputMessage = "<script>alert('Your current password is wrong.');</script>";
-            }
-        }
-
-        // Perform assertions based on the expected values
-        $this->assertTrue(isset($adminid)); // Check if admin ID is set
-        $this->assertTrue(isset($cpassword)); // Check if current password is set
-        $this->assertTrue(isset($newpassword)); // Check if new password is set
-        $this->assertTrue($queryResult); // Check if the query was successful
-        $this->assertTrue(isset($outputMessage)); // Check for success or error message
+        // Reset superglobals after the test
+        $_SERVER['REQUEST_METHOD'] = '';
+        $_POST = array();
     }
 }
-?>
